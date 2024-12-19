@@ -150,28 +150,6 @@ void handle_client_connection(SOCKET client_socket, Database *db) {
             } else {
                 send(client_socket, "Invalid DELETE command format\n", 31, 0);
             }
-        } else if (strcmp(buffer, "VIEW\n") == 0) {
-            char response[1024];
-            memset(response, 0, sizeof(response));
-
-            // Используем временный файл
-            FILE *temp = tmpfile();
-            if (!temp) {
-                send(client_socket, "Failed to view data\n", 21, 0);
-                continue;
-            }
-
-            // Вывод данных из базы в файл
-            view_all_data(db, temp);
-
-            // Перематываем файл и отправляем данные клиенту
-            rewind(temp);
-            while (fgets(response, sizeof(response), temp)) {
-                send(client_socket, response, strlen(response), 0);
-            }
-
-            fclose(temp);
-            send(client_socket, "\n", 1, 0); // Завершить вывод
         } else {
             send(client_socket, "Unknown command\n", 17, 0);
         }

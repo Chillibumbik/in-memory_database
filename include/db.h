@@ -14,6 +14,5 @@ void destroy_database(Database *db);
 bool add_data(Database *db, const char *key, const char *value);
 char* get_data(Database *db, const char *key);
 bool delete_data(Database *db, const char *key);
-void view_all_data(Database *db, FILE *output);
 
 #endif 

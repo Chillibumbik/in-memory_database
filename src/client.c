@@ -13,7 +13,6 @@ void print_welcome_message() {
     printf("  ADD <key> <value>   - Add a key-value pair to the database.\n");
     printf("  GET <key>           - Retrieve the value for a given key.\n");
     printf("  DELETE <key>        - Remove a key-value pair from the database.\n");
-    printf("  VIEW                - View all key-value pairs in the database.\n");
     printf("  EXIT                - Disconnect from the server.\n");
     printf("-------------------------------------------\n");
 }

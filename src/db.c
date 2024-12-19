@@ -30,12 +30,4 @@ bool delete_data(Database *db, const char *key) {
     return delete_key(db->map, key);
 }
 
-void view_all_data(Database *db, FILE *output) {
-    for (size_t i = 0; i < db->map->size; i++) {
-        HashMapNode *node = db->map->table[i];
-        while (node) {
-            fprintf(output, "Key: %s, Value: %s\n", node->key, node->value);
-            node = node->next;
-        }
-    }
-}
+
